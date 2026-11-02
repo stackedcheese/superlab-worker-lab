@@ -16,8 +16,9 @@ Record only actions completed in this public synthetic sandbox. This log does no
 
 ### Google Apps Script synthetic trigger test — BLOCKED BEFORE EXECUTION
 - This is the next untested candidate in the ranked sequence.
-- The synthetic task, manifest, and trigger/cleanup source are on branch worker/apps-script-synthetic-20261102; local JavaScript syntax and JSON parsing passed.
-- An initial clasp invocation hit ECOMPROMISED from npm's shared-cache lock timeout. A dedicated temporary cache then ran clasp 3.4.1 without a global install.
-- No clasp authorization was present. The clasp sign-in flow requested broad Drive and Google Cloud scopes beyond this trigger-only test, so it was stopped before approval.
+- Synthetic task, manifest, and trigger/cleanup source are staged on branch worker/apps-script-synthetic-20261102; local JavaScript syntax and JSON parsing passed.
+- npm's shared-cache lock first returned ECOMPROMISED. A dedicated temporary cache then ran clasp 3.4.1 without a global install.
+- The clasp OAuth flow requested broad Drive and Google Cloud scopes; it was stopped before approval.
+- A later Opera navigation to script.google.com under the proposed Kobe account was rejected by automatic approval review because no explicit account selection was received. No Google page was opened or authorized.
 - No Apps Script project was created, no Google scopes were granted, no quota check occurred, and no worker execution took place.
-- Next step: get a least-scope Apps Script authorization path, then run the synthetic trigger and cleanup. Do not count Apps Script as tested yet.
+- Next step: select the Google account and use a narrower Apps Script authorization path. Do not count Apps Script as tested yet.
