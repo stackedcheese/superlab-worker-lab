@@ -1,0 +1,19 @@
+{
+  "task_id": "SYN-GAS-001",
+  "description": "Use one Apps Script time-based trigger to record a synthetic marker, then return a pending-review receipt and remove only this test trigger and its script properties. Permitted services: ScriptApp and PropertiesService only.",
+  "allowed_read_paths": ["Code.gs", "appsscript.json"],
+  "allowed_write_paths": [],
+  "external_access": "deny",
+  "paid_usage": "deny",
+  "secret_access": "deny",
+  "acceptance_checks": [
+    "One time-based trigger fires the synthetic handler.",
+    "The handler records only a synthetic script-property marker.",
+    "The receipt conforms to worker-receipt.schema.json and remains pending review.",
+    "The test trigger and test properties are removed after receipt capture."
+  ],
+  "stop_conditions": [
+    "Stop if any unexpected trigger or script property exists.",
+    "Stop if Drive, Sheets, network, paid APIs, or secrets are needed."
+  ]
+}
