@@ -14,10 +14,11 @@ Record only actions completed in this public synthetic sandbox. This log does no
 - Manual run: 41399634914 (workflow_dispatch), completed with conclusion success at 2026-11-02 06:23:59 UTC.
 - The workflow validated checked-in synthetic fixtures only. It did not call Qwen Code or LM Studio, dispatch a V27 worker, or change production files.
 
-### Google Apps Script synthetic trigger test — BLOCKED BEFORE EXECUTION
-- This is the next untested candidate in the ranked sequence.
-- The test harness is prepared in a temporary local folder; its JavaScript syntax and JSON files passed local parsing checks.
-- Initial clasp invocation hit ECOMPROMISED from npm's shared-cache lock timeout. Retrying with a dedicated temporary cache succeeded; clasp 3.4.1 ran ephemerally without a global install.
-- clasp authorization was not present. The sign-in request included broad Drive and Google Cloud scopes beyond this trigger-only test, so the process was stopped before approval.
-- No Apps Script project was created, no account scopes were granted, no quota check occurred, and no worker execution took place.
-- Next step: stage this synthetic harness in the worker repo and use a least-scope Apps Script authorization path. Do not count Apps Script as tested yet.
+### Google Apps Script synthetic trigger test — PASS (sample-only)
+- The harness files were staged on this feature branch and run in a separate synthetic Apps Script project.
+- After explicit owner approval, the run received only the script.scriptapp (trigger management) and script.storage (script properties) scopes. The earlier clasp attempt requesting broader Drive and Google Cloud scopes was stopped before approval.
+- startSyntheticQualification completed at 2026-11-02 07:52:28 UTC and scheduled one 60-second trigger for runSyntheticQualificationWorker.
+- The time-driven runSyntheticQualificationWorker completed at 2026-11-02 07:54:06 UTC.
+- finalizeSyntheticQualification completed at 2026-11-02 07:59:12 UTC. Execution history shows the starter, worker, and finalizer completed; My Triggers showed no remaining trigger afterward.
+- The finalizer receipt marks the test sample_only, lists Code.gs and appsscript.json as inputs, records files_changed: [], and clears the synthetic script properties.
+- This qualifies only the narrow Apps Script trigger path. It is not worker admission or V27 project acceptance; the original V27 PM retains that authority.
