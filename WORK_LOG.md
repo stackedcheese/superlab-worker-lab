@@ -19,6 +19,6 @@ Record only actions completed in this public synthetic sandbox. This log does no
 - Synthetic task, manifest, and trigger/cleanup source are staged on branch worker/apps-script-synthetic-20261102; local JavaScript syntax and JSON parsing passed.
 - npm's shared-cache lock first returned ECOMPROMISED. A dedicated temporary cache then ran clasp 3.4.1 without a global install.
 - The clasp OAuth flow requested broad Drive and Google Cloud scopes; it was stopped before approval.
-- User selected the ug account. Apps Script opened and showed no existing projects; the create-project page confirmed unrulyoguptown@gmail.com and is waiting at an OK / Change account dialog.
-- No Apps Script project was created, no Google scopes were granted, no quota check occurred, and no worker execution took place.
-- The connected Opera tool can navigate and read the page but has no click action. Next: confirm the account dialog, then run the synthetic trigger and cleanup. Do not count Apps Script as tested yet.
+- User selected the ug account and confirmed the Apps Script project creation. The new standalone project is open in the editor with the default Code.gs.
+- The prepared test code has not been entered or run. No script service scopes were approved, no quota check occurred, and no worker execution took place.
+- The connected Opera tool can navigate and read the editor but has no click or text-entry action. Next: use an approved editor interaction path to enter the staged code, run the trigger, and clean it up. Do not count Apps Script as tested yet.
