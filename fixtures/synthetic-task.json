@@ -1,0 +1,11 @@
+{
+  "task_id": "SYN-001",
+  "description": "Validate a synthetic output against this task card's path and no-network controls.",
+  "allowed_read_paths": ["fixtures/synthetic-task.json", "schemas/task-card.schema.json"],
+  "allowed_write_paths": ["fixtures/synthetic-output.txt"],
+  "external_access": "deny",
+  "paid_usage": "deny",
+  "secret_access": "deny",
+  "acceptance_checks": ["Reported paths are allowlisted.", "The sample remains pending review."],
+  "stop_conditions": ["Stop on a path outside the allowlist.", "Stop if network, payment, or secrets are needed."]
+}

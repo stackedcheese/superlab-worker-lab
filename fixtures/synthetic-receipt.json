@@ -1,0 +1,12 @@
+{
+  "task_id": "SYN-001",
+  "status": "complete",
+  "sample_only": true,
+  "files_read": ["fixtures/synthetic-task.json", "schemas/task-card.schema.json"],
+  "files_changed": ["fixtures/synthetic-output.txt"],
+  "checks": [
+    {"name": "paths-within-allowlists", "result": "passed"},
+    {"name": "deny-by-default-controls", "result": "passed"}
+  ],
+  "review_status": "pending"
+}

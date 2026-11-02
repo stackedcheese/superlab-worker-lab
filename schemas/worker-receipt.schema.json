@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Bounded worker evidence receipt",
+  "type": "object",
+  "required": ["task_id", "status", "sample_only", "files_read", "files_changed", "checks", "review_status"],
+  "properties": {
+    "task_id": {"type": "string", "pattern": "^SYN-[A-Z0-9-]+$"},
+    "status": {"enum": ["complete", "blocked", "needs_review"]},
+    "sample_only": {"type": "boolean"},
+    "files_read": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "files_changed": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "checks": {"type": "array", "items": {"type": "object"}},
+    "review_status": {"enum": ["pending", "ACCEPT", "REVISE", "REJECT"]}
+  },
+  "additionalProperties": false
+}

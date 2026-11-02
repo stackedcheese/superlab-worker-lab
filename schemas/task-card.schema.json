@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Bounded synthetic task card",
+  "type": "object",
+  "required": ["task_id", "description", "allowed_read_paths", "allowed_write_paths", "external_access", "paid_usage", "secret_access", "acceptance_checks", "stop_conditions"],
+  "properties": {
+    "task_id": {"type": "string", "pattern": "^SYN-[A-Z0-9-]+$"},
+    "description": {"type": "string", "minLength": 1},
+    "allowed_read_paths": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "allowed_write_paths": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "external_access": {"const": "deny"},
+    "paid_usage": {"const": "deny"},
+    "secret_access": {"const": "deny"},
+    "acceptance_checks": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "stop_conditions": {"type": "array", "items": {"type": "string"}, "minItems": 1}
+  },
+  "additionalProperties": false
+}
