@@ -14,8 +14,9 @@ Record only actions completed in this public synthetic sandbox. This log does no
 - Manual run: 41399634914 (workflow_dispatch), completed with conclusion success at 2026-11-02 06:23:59 UTC.
 - The workflow validated checked-in synthetic fixtures only. It did not call Qwen Code or LM Studio, dispatch a V27 worker, or change production files.
 
-### Google Apps Script synthetic test — BLOCKED
+### Google Apps Script synthetic test — BLOCKED BEFORE EXECUTION
 - This is the next untested candidate in the ranked sequence.
-- The temporary npx invocation for @google/clasp failed with npm ECOMPROMISED: Lock compromised.
-- clasp is not installed and no clasp authorization file is present. No Apps Script project was created and no worker execution or quota check occurred.
-- Do not count Apps Script as tested until the install/authentication blocker is resolved.
+- First npx invocation hit ECOMPROMISED from npm's shared-cache lock timeout.
+- Retrying with a dedicated temporary cache succeeded; clasp 3.4.1 ran ephemerally without a global install.
+- No clasp authorization file is present. No Apps Script project was created, no quota check occurred, and no worker execution took place.
+- Next gate: authorize a synthetic Apps Script project run. Do not count Apps Script as tested yet.
