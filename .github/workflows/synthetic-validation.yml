@@ -2,6 +2,15 @@ name: Synthetic worker fixture validation
 
 on:
   workflow_dispatch:
+    inputs:
+      test_mode:
+        description: "Pass exact oracle or fail one-cent tampering"
+        required: true
+        default: positive
+        type: choice
+        options:
+          - positive
+          - negative
 
 permissions:
   contents: read
@@ -9,11 +18,18 @@ permissions:
 jobs:
   validate-fixture:
     runs-on: ubuntu-24.04
-    timeout-minutes: 2
+    timeout-minutes: 5
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
         with:
           persist-credentials: false
-      - name: Validate synthetic task and receipt
+      - name: Validate previous synthetic worker fixture
         run: python3 scripts/validate_synthetic_receipt.py
+      - name: Unit-test exact workload and fault detection
+        run: python3 -m unittest discover -s tests -p 'test_measured_compute.py' -v
+      - name: Compute one million fixed-seed records against independent oracle
+        run: python3 scripts/measured_compute.py
+      - name: Deliberate incorrect result must make this run fail
+        if: ${{ inputs.test_mode == 'negative' }}
+        run: python3 scripts/measured_compute.py --inject-one-cent-error
