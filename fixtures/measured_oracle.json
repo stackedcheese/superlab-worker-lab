@@ -1,0 +1,13 @@
+{
+  "count": 1000000,
+  "seed": 20261110,
+  "positive_cents": 24987238559,
+  "negative_cents": -24988886486,
+  "net_cents": -1647927,
+  "gross_abs_cents": 49976125045,
+  "positive_count": 499849,
+  "negative_count": 500144,
+  "zero_count": 7,
+  "weighted_checksum64": 50018260594740356,
+  "sha256_states": "d5e04450456c7829866749f66e2698b1b5db568baec5159336475a38ae71bc54"
+}
